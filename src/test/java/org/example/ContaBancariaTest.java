@@ -12,14 +12,14 @@ class ContaBancariaTest {
     void deveCriarContaComSaldoPositivo() {
         ContaBancaria conta = new ContaBancaria(5);
 
-        assertEquals(5, conta.getSaldo());
+        assertEquals(5, conta.getSaldo(), 0.000001);
     }
 
     @Test
     void deveCriarContaComSaldoZero() {
         ContaBancaria conta = new ContaBancaria(0);
 
-        assertEquals(0, conta.getSaldo());
+        assertEquals(0, conta.getSaldo(), 0.000001);
     }
 
     @Test
@@ -46,7 +46,7 @@ class ContaBancariaTest {
 
         conta.depositar(5);
 
-        assertEquals(15, conta.getSaldo());
+        assertEquals(15, conta.getSaldo(), 0.000001);
     }
 
     @Test
@@ -87,7 +87,16 @@ class ContaBancariaTest {
 
         conta.sacar(5);
 
-        assertEquals(5, conta.getSaldo());
+        assertEquals(5, conta.getSaldo(), 0.000001);
+    }
+
+    @Test
+    void deveSacarTodoOSaldoEDeixarSaldoZero() {
+        ContaBancaria conta = new ContaBancaria(10);
+
+        conta.sacar(10);
+
+        assertEquals(0, conta.getSaldo(), 0.000001);
     }
 
     @Test
@@ -128,5 +137,17 @@ class ContaBancariaTest {
                 IllegalArgumentException.class,
                 () -> conta.sacar(15)
         );
+    }
+
+    @Test
+    void deveManterSaldoQuandoOperacaoDeSaqueForInvalida() {
+        ContaBancaria conta = new ContaBancaria(10);
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> conta.sacar(15)
+        );
+
+        assertEquals(10, conta.getSaldo(), 0.000001);
     }
 }
