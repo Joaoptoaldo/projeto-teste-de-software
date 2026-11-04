@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContaBancaria.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">projetoTrabalho</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">ContaBancaria.java</span></div><h1>ContaBancaria.java</h1><pre class="source lang-java linenums">package org.example;
+
+public class ContaBancaria {
+
+    private double saldo;
+
+<span class="fc" id="L7">    public ContaBancaria(double saldoInicial) {</span>
+<span class="fc bfc" id="L8" title="All 2 branches covered.">        if (saldoInicial &lt; 0) {</span>
+<span class="fc" id="L9">            throw new IllegalArgumentException(</span>
+                    &quot;Saldo inicial não pode ser negativo&quot;);
+        }
+
+<span class="fc" id="L13">        saldo = saldoInicial;</span>
+<span class="fc" id="L14">    }</span>
+
+    public void depositar(double valor) {
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (valor &lt;= 0) {</span>
+<span class="fc" id="L18">            throw new IllegalArgumentException(</span>
+                    &quot;Valor do depósito deve ser positivo&quot;);
+        }
+
+<span class="fc" id="L22">        saldo += valor;</span>
+<span class="fc" id="L23">    }</span>
+
+    public void sacar(double valor) {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (valor &lt;= 0) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(</span>
+                    &quot;Valor do saque deve ser positivo&quot;);
+        }
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (valor &gt; saldo) {</span>
+<span class="fc" id="L32">            throw new IllegalArgumentException(</span>
+                    &quot;Saldo insuficiente&quot;);
+        }
+
+<span class="fc" id="L36">        saldo -= valor;</span>
+<span class="fc" id="L37">    }</span>
+
+    public double getSaldo() {
+<span class="fc" id="L40">        return saldo;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.16.202610240946</span></div></body></html>
