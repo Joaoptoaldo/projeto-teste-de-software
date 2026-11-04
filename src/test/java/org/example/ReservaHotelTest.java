@@ -78,21 +78,30 @@ class ReservaHotelTest {
     void calcularValorTotalSeisDiariasSemDescontoRetornaSeiscentos() {
         ReservaHotel reserva = new ReservaHotel(6, 100);
 
-        assertEquals(600, reserva.calcularValorTotal());
+        assertEquals(600, reserva.calcularValorTotal(), 0.000001);
     }
 
     @Test
     void calcularValorTotalSeteDiariasComDescontoRetornaSeiscentosETrinta() {
         ReservaHotel reserva = new ReservaHotel(7, 100);
 
-        assertEquals(630, reserva.calcularValorTotal());
+        assertEquals(630, reserva.calcularValorTotal(), 0.000001);
     }
 
     @Test
     void calcularValorTotalOitoDiariasComDescontoRetornaSetecentosEVinte() {
         ReservaHotel reserva = new ReservaHotel(8, 100);
 
-        assertEquals(720, reserva.calcularValorTotal());
+        assertEquals(720, reserva.calcularValorTotal(), 0.000001);
+    }
+
+    @Test
+    void calcularValorTotalSeteDiariasComCafeDaManhaEDescontoRetornaOitocentosEDezenove() {
+        ReservaHotel reserva = new ReservaHotel(7, 100);
+
+        reserva.adicionarCafeDaManha();
+
+        assertEquals(819, reserva.calcularValorTotal(), 0.000001);
     }
 
     // ====TESTES EXTRAS =====
@@ -102,7 +111,7 @@ class ReservaHotelTest {
 
         reserva.adicionarCafeDaManha();
 
-        assertEquals(31, reserva.calcularValorTotal());
+        assertEquals(31, reserva.calcularValorTotal(), 0.000001);
     }
 
     @Test
@@ -111,6 +120,7 @@ class ReservaHotelTest {
 
         reserva.cancelar();
 
+        assertTrue(reserva.isCancelada());
         assertEquals(0, reserva.calcularValorTotal());
     }
 

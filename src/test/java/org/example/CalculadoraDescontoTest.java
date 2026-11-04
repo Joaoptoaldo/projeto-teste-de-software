@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CalculadoraDescontoTest {
 
     private final CalculadoraDesconto calculadora =
@@ -41,7 +39,8 @@ class CalculadoraDescontoTest {
     void calcularValorCompraUmPercentualDezRetornaZeroVirgulaNove() {
         assertEquals(
                 0.9,
-                calculadora.calcular(1, 10)
+                calculadora.calcular(1, 10),
+                0.000001
         );
     }
 
